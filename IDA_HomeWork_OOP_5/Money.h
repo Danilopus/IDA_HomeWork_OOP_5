@@ -15,15 +15,8 @@ class Money
 	static std::vector <Money> _money_list;
 	static std::map <int, std::string> codes_of_operation;
 public:
-	//static std::vector <Money> _money_list;
-
-	//std::map <int, std::string> Fraction::codes_of_operation
-	//static std::map <int, std::string> codes_of_operation;
-
-
-
 	// Constructors // Initialisation // Destructors // Memory Clean -------
-	Money(long long coins = 0, long long roubles = 0) { Set_roubles(roubles).Set_coins(coins); _money_list.push_back(*this); }
+	Money(long long coins = 0, long long roubles = 0);
 	//Money() {}
 	~Money()
 	{
@@ -31,22 +24,17 @@ public:
 		//_getch();
 	}
 	static void Initialisation(int provided_at_startup_money_holders_quantity);
-	static void Memory_Clean()
-	{
-		//for (int i = 0; i < _money_list.size(); i++)
-		//	delete[] &_money_list[i];
-		_money_list.clear();
-	}
+	static void Memory_Clean();
 
 	// Setters // Getters --------------------------------------------------
-	Money& Set_roubles(long long rubles) { _roubles = rubles; return *this; }
+	Money& Set_roubles(long long rubles);
 	Money& Set_coins(long long coins);
 	long long Get_roubles() { return _roubles; }
 	int Get_coins() { return _coins; }
 
 	// Shows ---------------------------------------------------------------
-	//void ShowValues() { std::cout << *this; }
-	void ShowValues() { std::cout << this; }
+	void ShowValues() { std::cout << *this; }
+	//void ShowValues() { std::cout << this; }
 	static void ShowMethods();
 	static void ShowAvailableMoneyObjects();
 
@@ -145,6 +133,4 @@ public:
 		out << Money_holder.Get_roubles() << " roubles " << Money_holder.Get_coins() << " coins ";
 		return out;	
 	}
-
-
 };

@@ -36,10 +36,9 @@
 // Homework OOP 5 ----------------------------------------------------	
 
 
-//Task 1 "Money class demo with overloaded operators:\n\tBinary: + | - | / | * \n\tUnary: + | - | ++ | --"
+//Task 1 Money class demo with overloaded operators:\n\t + | - | / | * | > | < | =
 void Task_1(std::string name_of_task)
 {
-	//std::cout << "***\t ComplexNumber class through inheritance with overloaded operators: + | - | / | * demo\n";
 	std::cout << "Enter provided_at_startup_money_holders_quantity -> ";
 	int provided_at_startup_money_holders_quantity = Get_Int_Positive(0, 10, "it's too much, reasonable limit is 10 -> ");
 	Money::Initialisation(provided_at_startup_money_holders_quantity);
@@ -74,7 +73,7 @@ int main()
 	//system("mode con cols=60 lines=40"); 
 	Main_menu MainMenu;	
 	MainMenu.AddElement("OOP Home Work 05: Classes. Money container");	// Homework name
-	MainMenu.AddElement("Money class demo with overloaded operators:\n\tBinary: + | - | / | * \n\tUnary: + | - | ++ | --");
+	MainMenu.AddElement("Money class demo with overloaded operators:\n\t + | - | / | * | > | < | =");
 	//MainMenu.AddElement("XXX");
 	do 
 	{		

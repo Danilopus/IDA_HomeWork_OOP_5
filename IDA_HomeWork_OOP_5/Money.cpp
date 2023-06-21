@@ -17,11 +17,25 @@ std::vector <Money> Money::_money_list;
 std::map <int, std::string> Money::codes_of_operation{ {1," + "}, {2," - "}, {3," * "}, {4, " / "}, {5, " * "}, {6," / "}, {7, " > "}, {8," < "},{9," = "}, {0, "=="} };
 
 
+Money::Money(long long coins, long long roubles) 
+{ 
+	Set_roubles(roubles).Set_coins(coins); _money_list.push_back(*this); 
+}
+
 void Money::Initialisation(int provided_at_startup_money_holders_quantity)
 {
 	for (int i = 0; i < provided_at_startup_money_holders_quantity; i++)
 		new Money(Get_Random(0, 100), Get_Random(0, 100));
 }
+
+void Money::Memory_Clean()
+{
+	//for (int i = 0; i < _money_list.size(); i++)
+	//	delete[] &_money_list[i];
+	_money_list.clear();
+}
+
+Money& Money::Set_roubles(long long rubles) { _roubles = rubles; return *this; }
 
 Money& Money::Set_coins(long long coins)
 {
