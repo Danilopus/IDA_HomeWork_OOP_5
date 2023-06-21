@@ -84,36 +84,11 @@ public:
 	Money& operator*(const Money& another_Money) const;
 	Money& operator*(double multiplier) const;
 	Money& operator/(double divider) const;
-	double operator/(const Money& another_Money) const //процент какая первая сумма от второй
-	{
-		double coefficient = double((_roubles * 100 + _coins)) / double((another_Money._roubles * 100 + another_Money._coins));
-		return coefficient * 100;
-	}
-	bool operator>(const Money& another_Money) const
-	{
-		long long full_coin_amount = (_roubles * 100 + _coins) - (another_Money._roubles * 100 + another_Money._coins);
-		return (full_coin_amount < 0 ? 0 : 1);
-	}
-	bool operator<(const Money& another_Money) const
-	{
-		long long full_coin_amount = (_roubles * 100 + _coins) - (another_Money._roubles * 100 + another_Money._coins);
-		return (full_coin_amount < 0 ? 1 : 0);
-	}
-	bool operator==(const Money& another_Money) const
-	{
-		long long full_coin_amount = (_roubles * 100 + _coins) - (another_Money._roubles * 100 + another_Money._coins);
-		return (full_coin_amount == 0 ? 1 : 0);
-	}	
+	double operator/(const Money& another_Money) const;
+	bool operator>(const Money& another_Money) const;
+	bool operator<(const Money& another_Money) const;
+	bool operator==(const Money& another_Money) const;
 
-	friend std::ostream& operator << (std::ostream & out, Money* just_a_Money)
-	{
-			out << just_a_Money->Get_roubles() << " roubles" << just_a_Money->Get_coins() << " coins";
-			return out;
-	}
-	friend std::ostream& operator << (std::ostream& out, Money& Money_holder)
-	{		
-		//out << Money_holder.Get_roubles() << ", " << Money_holder.Get_coins();
-		out << Money_holder.Get_roubles() << " roubles " << Money_holder.Get_coins() << " coins ";
-		return out;	
-	}
+	friend std::ostream& operator << (std::ostream& out, Money* just_a_Money);
+	friend std::ostream& operator << (std::ostream& out, Money& Money_holder);
 };
