@@ -28,7 +28,7 @@
 //My own headers
 #include "Service functions.h"
 #include "MainMenu.h"
-#include "Fraction.h"
+//#include "Fraction.h"
 #include "Money.h"
 
 
@@ -50,7 +50,7 @@ void Task_1(std::string name_of_task)
 		std::cout << "***\t" << name_of_task << "\n";
 		Money::ShowAvailableMoneyObjects();
 		Money::ShowMethods();
-		Money::UserChoiceHandle_getch();
+		if (Money::UserChoiceHandle_getch()) break;
 
 		std::cout << "\n\nEsc - exit | any key to continue";
 	} while (_getch() != 27);
