@@ -5,15 +5,22 @@ std::map <int, std::string> keycodes{ {27, "Esc"}, {13, "Enter"}, {48, "0"}, {57
 std::string console_clear = "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
 std::string big_space = "                                                           ";
 std::map <int, int> codes_of_digits{ {49, 0}, {50, 1}, {51, 2},{52, 3},{53, 4},{54, 5},{55, 6},{56, 7},{57, 8} };
-std::vector <Money> Money::_money_list;
 // Операции с дробями 
 //std::map <int, std::string> Fraction::codes_of_operation{ {1," + "}, {2," - "}, {3," * "}, {4, " / "}, {5, "++"}, {6,"++"}, {7, "--"}, {8,"--"},{9,"+"}, {0, "-"} };
 std::map <int, std::string> Money::codes_of_operation{ {1," + "}, {2," - "}, {3," * "}, {4, " / "}, {5, " * "}, {6," / "}, {7, " > "}, {8," < "},{9," = "}, {0, "=="} };
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//Q7 есть ли утечка памяти? В векторе создается копия *this? А сам *this остаеся в памяти без указателя? 
+// Надо ли удалять (вариант под комментариями)?
+// *Конструктор копирования и деструктор по умолчанию
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+std::vector <Money> Money::_money_list;
 
 Money::Money(long long coins, long long roubles) 
 { 
-	Set_roubles(roubles).Set_coins(coins); _money_list.push_back(*this); 
+	Set_roubles(roubles).Set_coins(coins); 
+	_money_list.push_back(*this); 
+	// delete this;
 }
 
 void Money::Initialisation(int provided_at_startup_money_holders_quantity)

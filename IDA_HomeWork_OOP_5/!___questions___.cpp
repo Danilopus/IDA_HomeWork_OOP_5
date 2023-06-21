@@ -98,3 +98,18 @@ Fraction* operator+(Fraction& another_Fraction)
 //	//return &tmp_obj;
 //	return tmp_obj;
 //}
+
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//Q7 есть ли утечка памяти? В векторе создается копия *this? А сам *this остаеся в памяти без указателя? 
+// Надо ли удалять (вариант под комментами)?
+// *Конструктор копирования и деструктор по умолчанию
+//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+//std::vector <Money> Money::_money_list;
+//
+//Money::Money(long long coins, long long roubles)
+//{
+//	Set_roubles(roubles).Set_coins(coins);
+//	_money_list.push_back(*this);
+//	// delete this;
+//}
