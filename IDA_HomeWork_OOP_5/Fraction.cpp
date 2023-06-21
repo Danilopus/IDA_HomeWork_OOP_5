@@ -214,5 +214,6 @@ std::ostream& operator<<(std::ostream& out, Fraction& just_a_fraction)
 //const std::vector<Fraction*> * Fraction::static_pointer_Available_fractions;
 //std::vector<Fraction*>* Fraction::static_pointer_Available_fractions;
 std::vector<Fraction*>* Fraction::static_pointer_Available_fractions{ nullptr };
+
 std::map <int, std::string> Fraction::codes_of_operation{ {1," + "}, {2," - "}, {3," * "}, {4, " / "}, {5, "++"}, {6,"++"}, {7, "--"}, {8,"--"},{9,"+"}, {0, "-"} };
 

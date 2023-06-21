@@ -33,10 +33,8 @@
 
 
 
-// Homework OOP 4 ----------------------------------------------------	
+// Homework OOP 5 ----------------------------------------------------	
 
-
-// защита от нуля в знаменателе - assert
 
 //Task 1 "Money class demo with overloaded operators:\n\tBinary: + | - | / | * \n\tUnary: + | - | ++ | --"
 void Task_1(std::string name_of_task)
@@ -50,13 +48,13 @@ void Task_1(std::string name_of_task)
 	{
 		system("cls");
 		std::cout << "***\t" << name_of_task << "\n";
-		ComplexNumber_class_through_inheritance::Show_List_of_available_numbers();
-		ComplexNumber_class_through_inheritance::ShowMethods();
-		ComplexNumber_class_through_inheritance::User_Choice_Handle();
+		Money::ShowAvailableMoneyObjects();
+		Money::ShowMethods();
+		Money::UserChoiceHandle_getch();
 
 		std::cout << "\n\nEsc - exit | any key to continue";
 	} while (_getch() != 27);
-	ComplexNumber_class_through_inheritance::MemoryClean();
+	Money::Memory_Clean();
 }
 
 //Task 2
