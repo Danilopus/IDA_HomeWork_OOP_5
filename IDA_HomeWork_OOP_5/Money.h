@@ -20,7 +20,7 @@ public:
 	//Money() {}
 	~Money()
 	{
-		std::cout << "\nDestructor at work\n";
+		//std::cout << "Vector reallocates memory";
 		//_getch();
 	}
 	static void Initialisation(int provided_at_startup_money_holders_quantity);
@@ -78,29 +78,12 @@ public:
 
 	//Overload operators - reference returned -----------------------------------------
 
-	Money& operator+(const Money& another_Money) const
-	{
-		return *new Money((_coins + another_Money._coins), (_roubles + another_Money._roubles));
-	}
 	//Money* operator+(Money & another_Money);
-	Money& operator-(const Money& another_Money) const
-	{
-		long long full_coin_amount = (_roubles * 100 + _coins) - (another_Money._roubles * 100 + another_Money._coins);
-		assert((full_coin_amount >= 0) && "Debt");
-		return *new Money(full_coin_amount);
-	}
-	Money& operator*(const Money& another_Money) const
-	{
-		return *new Money((_coins * another_Money._coins), (_roubles * another_Money._roubles));
-	}	
-	Money& operator*(double multiplier) const	
-	{
-		return *new Money(long long((_coins + _roubles * 100) * multiplier));
-	}
-	Money& operator/(double divider) const
-	{		
-		return *new Money((_coins + _roubles * 100)/ divider);
-	}
+	Money& operator+(const Money& another_Money) const;
+	Money& operator-(const Money& another_Money) const;
+	Money& operator*(const Money& another_Money) const;
+	Money& operator*(double multiplier) const;
+	Money& operator/(double divider) const;
 	double operator/(const Money& another_Money) const //процент какая первая сумма от второй
 	{
 		double coefficient = double((_roubles * 100 + _coins)) / double((another_Money._roubles * 100 + another_Money._coins));

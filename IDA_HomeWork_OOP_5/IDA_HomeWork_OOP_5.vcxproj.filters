@@ -30,9 +30,6 @@
     <ClCompile Include="!___questions___.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Fraction.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainMenu.h">
@@ -42,9 +39,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Money.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Fraction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

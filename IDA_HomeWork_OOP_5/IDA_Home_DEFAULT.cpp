@@ -40,8 +40,9 @@
 void Task_1(std::string name_of_task)
 {
 	std::cout << "Enter provided_at_startup_money_holders_quantity -> ";
-	int provided_at_startup_money_holders_quantity = Get_Int_Positive(0, 10, "it's too much, reasonable limit is 10 -> ");
-	Money::Initialisation(provided_at_startup_money_holders_quantity);
+	//int provided_at_startup_money_holders_quantity = Get_Int_Positive(0, 10, "it's too much, reasonable limit is 10 -> ");
+	//Money::Initialisation(provided_at_startup_money_holders_quantity);
+	Money::Initialisation(Get_Int_Positive(0, 10, "it's too much, reasonable limit is 10 -> "));
 
 	do
 	{

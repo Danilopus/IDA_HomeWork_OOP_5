@@ -1,8 +1,8 @@
 ﻿#include "Money.h"
 
 
-static std::map <int, std::string> keycodes{ {27, "Esc"}, {13, "Enter"}, {48, "0"}, {57, "9"} };
-static std::string console_clear = "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
+std::map <int, std::string> keycodes{ {27, "Esc"}, {13, "Enter"}, {48, "0"}, {57, "9"} };
+std::string console_clear = "\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b";
 //static std::string big_space = "                                                           ";
 std::string big_space = "                                                           ";
 //extern std::string big_space = "                                                           ";
@@ -46,7 +46,7 @@ Money& Money::Set_coins(long long coins)
 
 void Money::ShowMethods()
 {
-	std::cout << "\n\nAvailable methods:\n";
+	std::cout << "\n\n -------- Available methods: --------\n";
 	std::cout << "Summation [+] -> [1]" << "\t\t" << "Multyply by [real] -> [5]" << '\n';
 	std::cout << "Substract [-] -> [2]" << "\t\t" << "Divide   by [real] -> [6]" << '\n';
 	std::cout << "Multiply  [*] -> [3]" << "\t\t" << "is_more     [>]    -> [7]" << '\n';
@@ -83,10 +83,10 @@ int Money::UserChoiceHandle_getch()
 	if (method_choice < 5 || method_choice > 6)//разделеям бинарные операции между объектами и числами
 	{
 		Money& Operand_1 = *Get_Operand_getch(1);
-		if (&Operand_1 == nullptr) return 1;
+		if (&Operand_1 == nullptr) return 0;
 		std::cout << "\n   " << codes_of_operation[method_choice];
 		Money& Operand_2 = *Get_Operand_getch(2);
-		if (&Operand_2 == nullptr) return 1;
+		if (&Operand_2 == nullptr) return 0;
 
 		Operation_module(method_choice, Operand_1, Operand_2);
 
@@ -245,4 +245,31 @@ void Money::Operation_module(int action, Money& Operand_1, double Operand_2)
 		//case 0: -Operand; break;
 	}
 	std::cout << _money_list[_money_list.size() - 1];
+}
+
+Money& Money::operator+(const Money& another_Money) const
+{
+	return *new Money((_coins + another_Money._coins), (_roubles + another_Money._roubles));
+}
+
+Money& Money::operator-(const Money& another_Money) const
+{
+	long long full_coin_amount = (_roubles * 100 + _coins) - (another_Money._roubles * 100 + another_Money._coins);
+	assert((full_coin_amount >= 0) && "Debt");
+	return *new Money(full_coin_amount);
+}
+
+Money& Money::operator*(const Money& another_Money) const
+{
+	return *new Money((_coins * another_Money._coins), (_roubles * another_Money._roubles));
+}
+
+Money& Money::operator*(double multiplier) const
+{
+	return *new Money(long long((_coins + _roubles * 100) * multiplier));
+}
+
+Money& Money::operator/(double divider) const
+{
+	return *new Money((_coins + _roubles * 100) / divider);
 }
